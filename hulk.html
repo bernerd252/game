@@ -5,38 +5,22 @@
 		<title>Trigger Clicked</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<!-- Added link to the jQuery Library -->
-		<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
-
-
-		
-
-		  
-
-		
-
+		<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>	
 	</head>
 	<body>
-		<div class = stamina>
-		100
+		<div class = "stamina">
+			<p>100</p>
 		</div>
-		<div class = OpponentsStamina>
-		100
+		<div class = "OpponentsStamina">
+			<p>100</p>
 		</div>
-
-		<div class = userAvatar>
-			<div class = hulkstanding>
-			</div>
+		<div class = "UserAvatar">
+			<img src="images/hulkStanding.gif">
 		</div>
-		<div class = ComputerAvatar>
 		</div>
-
-		<style>
-
-
-
-
-				</style>
-
+		<div class = "ComputerAvatar">
+		</div>
+		
 		<script type="text/javascript">
 
 		// DECDLARE VARIABLES
@@ -72,7 +56,7 @@
 		var blackpantherIntelligence = ["1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"]
 		var blackpanther = [blackpantherStrength,blackpantherSpeed, blackpantherStamina, blackpantherDefence, blackpantherIntelligence];
 		// var heroes = [spiderman, ironman, wolverine, blackpanther];
-		var heroes = [spiderman, ironman, wolverine, blackpanther];
+		var heroes = [ironman];
 		 // console.log(heroes)
 		var userChoice = hulk
 		 // console.log(userChoice)
@@ -94,32 +78,69 @@
 			var computerDefence = computerChoice[3];
 			var computerIntelligence = computerChoice[4];
 			var computerLife = 100;
-
 			var opponent = (computerStrength + computerStamina + computerSpeed + computerDefence + computerIntelligence);
-			console.log("var opponent" + opponent)
+			// console.log("var opponent" + opponent)
+			var character = opponent[63];
+			// console.log(character)
+			var character2 = opponent[62];
+			// console.log(character2)
+			if (character2 == 7)
+			 {	var html = "<img src='images/hulkStandingRight.gif'>"
+				document.querySelector('.ComputerAvatar').innerHTML = html;}
 
-			var character = opponent[43];
-			console.log(character)
-			var character2 = opponent[42];
-			console.log(character2)
+			  if (character == 3) 
+			  	// character 2 = 1
+			 {	var html = "<img src='images/spidermanStandingRight.gif'>"
+				document.querySelector('.ComputerAvatar').innerHTML = html;}
 
-			// if (character == 5)
-			// {	var html = "<img src='images/spidermanStanding.gif'>"
-				// document.querySelector('.ComputerAvatar').innerHTML = html;}
+			 if (character == 0)
+			 	// character 2 = 1
+			{	var html = "<img src='images/ironmanStandingRight.gif'>"
+				 document.querySelector('.ComputerAvatar').innerHTML = html;}
 
-			// if (character == 8)
-			// {	var html = "<img src='images/ironmanStandingRight.gif'>"
-				// document.querySelector('.ComputerAvatar').innerHTML = html;}
+			 if (character == 2)
+			 	// character2 = 1
+			 {	var html = "<img src='images/wolverineStandingRight.gif'>"
+				 document.querySelector('.ComputerAvatar').innerHTML = html;}
 
-			// if (character2 == 3)
-			// {	var html = "<img src='images/wolverineStandingRight.gif'>"
-				// document.querySelector('.ComputerAvatar').innerHTML = html;}
+			 if (character == 1)
+			 	// character2 = 1
+			 {	var html = "<img src='images/blackpantherStandingRight.gif'>"
+				 document.querySelector('.ComputerAvatar').innerHTML = html;}
 
-			// if (character == 2)
-			// {	var html = "<img src='images/blackpantherStanding.gif'>"
-				// document.querySelector('.ComputerAvatar').innerHTML = html;}
+			document.onkeydown = function(event)
+			{	var userMove = String.fromCharCode(event.keyCode).toLowerCase();
 
-			
+				 if (character == 3)
+			 	{	var html = "<img src='images/spidermanStanding.gif'>"
+					document.querySelector('.ComputerAvatar').innerHTML = html;}
+
+				if (character == 0)
+				{	var html = "<img src='images/ironmanStandingRight.gif'>"
+				 	document.querySelector('.ComputerAvatar').innerHTML = html;}
+
+			 	if (character == 2)
+			 	{	var html = "<img src='images/wolverineStandingRight.gif'>"
+				 	document.querySelector('.ComputerAvatar').innerHTML = html;}
+
+			 	if (character == 1)
+			 	{	var html = "<img src='images/blackpantherStanding.gif'>"
+				 	document.querySelector('.ComputerAvatar').innerHTML = html;}
+
+				{	if (userMove == "i")
+					{	var html = "<img src='images/hulkBigHit.gif'>"
+						document.querySelector('.UserAvatar').innerHTML = html;
+					}
+					if (userMove == "o")
+					{	var html = "<img src='images/hulkPunching.gif'>"
+						document.querySelector('.UserAvatar').innerHTML = html;
+					}
+					if (userMove == "p")
+					{	var html = "<img src='images/hulkKick.gif'>"
+						document.querySelector('.UserAvatar').innerHTML = html;
+					}
+				}
+			}
 			
 			// USER DECIDES ON MOVE COMPUTER LOGS CHOICE, , FIGHTING BEGINS,CHAOS ENSUES.
 
@@ -139,57 +160,48 @@
 							var computerBlock = (computerDefenceDefence * computerDefenceSpeed);
 							// console.log(computerBlock)	
 							var moveOutcome = (userBigHit - computerBlock);
-
-							$(".hulkstanding").addClass("hulkBigHit");
-							
+							var html = "<img src='images/hulkStanding.gif'>"
+							document.querySelector('.UserAvatar').innerHTML = html;							
 							{	if (moveOutcome > 400)
 								{	computerLife = (computerLife - 20);
 									console.log("computerLife " + computerLife)
 									console.log("userLife " + userLife)
 								}
-
 								if((moveOutcome < 401) && (moveOutcome > 300))
 								{	computerLife = (computerLife - 15); userLife = (userLife - 3);
 									console.log("computerLife " + computerLife)
 									console.log("userLife " + userLife)
 								}
-
 								if((moveOutcome < 301) && (moveOutcome > 200))
 								{	computerLife = (computerLife - 10); userLife = (userLife - 3);
 									console.log("computerLife " + computerLife)
 									console.log("userLife " + userLife)
 								}
-
 								if((moveOutcome < 201) && (moveOutcome > 100))
 								{	computerLife = (computerLife - 5); userLife = (userLife - 3);
 									console.log("computerLife " + computerLife)
 									console.log("userLife " + userLife)
 								}
-
 								if((moveOutcome < 101) && (moveOutcome > 0))
 								{	computerLife = (computerLife - 3); userLife = (userLife - 3);
 									console.log("computerLife " + computerLife)
 									console.log("userLife " + userLife)
 								}
-
 								if(moveOutcome < 1) 
 								{	userLife = (userLife - 3);
 									console.log("computerLife " + computerLife)
 									console.log("userLife " + userLife)
 								}
-
-								// if (computerLife < 1)
+								if (computerLife < 1)
 								// {	var html = "<div id = 'winnerScreen'></div>"
-									// var html = "<img src='images/hulkWin.gif'>"
-									// document.querySelector('.UserAvatar').innerHTML = html;
+									 var html = "<img src='images/hulkWin.gif'>"
+									document.querySelector('.UserAvatar').innerHTML = html;
 
 								// }
-
 								if (userLife < 1)
 								{	var html = "<div id = 'loserScreen'></div>"
 									
-								}
-								
+								}								
 							}						
 						}
 						if (userMove == "o")
@@ -207,8 +219,8 @@
 							var moveOutcome = (userPunch - computerBlock);
 							console.log("moveOutcome "  + moveOutcome)
 
-							// var html = "<img src='images/hulkPunching.gif'>"
-							// document.querySelector('.UserAvatar').innerHTML = html;
+							 var html = "<img src='images/hulkStanding.gif'>"
+							document.querySelector('.UserAvatar').innerHTML = html;
 
 							{	if (moveOutcome > 400)
 								{	computerLife = (computerLife - 15);
@@ -246,25 +258,18 @@
 									console.log("userLife " + userLife)
 								}
 
-								// if (computerLife < 1)
+								if (computerLife < 1)
 								// {	var html = "<div id = 'winnerScreen'></div>"
-									// var html = "<img src='images/hulkWin.gif'>"
-									// document.querySelector('.UserAvatar').innerHTML = html;
+									 var html = "<img src='images/hulkWin.gif'>"
+									 document.querySelector('.UserAvatar').innerHTML = html;
 
 								// }
 
 								if (userLife < 1)
 								{	var html = "<div id = 'loserScreen'></div>"
-
-									
-
 								}
-
 							}
-
 						}
-						
-
 						if (userMove == "p")
 						{	var userBigHitStrength = userStrength[Math.floor(Math.random() * userStrength.length)];
 							var userBigHitSpeed = userStrength[Math.floor(Math.random() * userStrength.length)];
@@ -280,8 +285,8 @@
 							var moveOutcome = (userKick - computerBlock);
 							console.log("moveOutcome "  + moveOutcome)
 
-							// var html = "<img src='images/hulkKick.gif'>"
-							// document.querySelector('.UserAvatar').innerHTML = html;
+							var html = "<img src='images/hulkStanding.gif'>"
+							 document.querySelector('.UserAvatar').innerHTML = html;
 
 							{	if (moveOutcome > 400)
 								{	computerLife = (computerLife - 10);
@@ -319,19 +324,16 @@
 									console.log("userLife " + userLife)
 								}
 
-								// if (computerLife < 1)
+								if (computerLife < 1)
 								// {	var html = "<div id = 'winnerScreen'></div>"
-									// var html = "<img src='images/hulkWin.gif'>"
-									// document.querySelector('.UserAvatar').innerHTML = html;
+									var html = "<img src='images/hulkWin.gif'>"
+									 document.querySelector('.UserAvatar').innerHTML = html;
 
 								// }
 
 								if (userLife < 1)
 								{	var html = "<div id = 'loserScreen'></div>"
-
-
 								}
-
 							}					
 						}
 					}
@@ -345,8 +347,83 @@
 					var computerChoices = ["i", "o", "p"]
 					var computerMove = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-					console.log("computerMove" + computerMove)
+					console.log("computerMove" + computerMove)					
+					if (computerMove == "i")
+					{	if (character2 == 7)
+						{	var html = "<img src='images/hulkBigHitRight.gif'>"
+							document.querySelector('.ComputerAvatar').innerHTML = html;}
 
+						if (character == 3) 
+							  	// character 2 = 1
+						{	var html = "<img src='images/spidermanBigHitRight.gif'>"
+							document.querySelector('.ComputerAvatar').innerHTML = html;}
+
+						if (character == 0)
+							 	// character 2 = 1
+						{	var html = "<img src='images/ironmanBigHitRight.gif'>"
+								 document.querySelector('.ComputerAvatar').innerHTML = html;}
+
+						if (character == 2)
+							 	// character2 = 1
+						{	var html = "<img src='images/wolverineBigHitRight.gif'>"
+							document.querySelector('.ComputerAvatar').innerHTML = html;}
+
+							if (character == 1)
+							 	// character2 = 1
+							{	var html = "<img src='images/blackpantherBigHitRight.gif'>"
+								 document.querySelector('.ComputerAvatar').innerHTML = html;}
+						}
+						if (computerMove == "o")
+						{	if (character2 == 7)
+							{	var html = "<img src='images/hulkPunchingRight.gif'>"
+								document.querySelector('.ComputerAvatar').innerHTML = html;}
+
+							 if (character == 3) 
+							  	// character 2 = 1
+							{	var html = "<img src='images/spidermanPunchingRight.gif'>"
+								document.querySelector('.ComputerAvatar').innerHTML = html;}
+
+							if (character == 0)
+							 	// character 2 = 1
+							{	var html = "<img src='images/ironmanPunchingRight.gif'>"
+								 document.querySelector('.ComputerAvatar').innerHTML = html;}
+
+							if (character == 2)
+							 	// character2 = 1
+							{	var html = "<img src='images/wolverinePunchingRight.gif'>"
+								 document.querySelector('.ComputerAvatar').innerHTML = html;}
+
+							if (character == 1)
+							 	// character2 = 1
+							{	var html = "<img src='images/blackpantherPunchingRight.gif'>"
+								document.querySelector('.ComputerAvatar').innerHTML = html;}
+						}
+
+						if (computerMove == "p")
+						{	if (character2 == 7)
+							{	var html = "<img src='images/hulkKickRight.gif'>"
+								document.querySelector('.ComputerAvatar').innerHTML = html;}
+
+							if (character == 3) 
+							  	// character 2 = 1
+							{	var html = "<img src='images/spidermanKickRight.gif'>"
+								document.querySelector('.ComputerAvatar').innerHTML = html;}
+
+							if (character == 0)
+							 	// character 2 = 1
+							{	var html = "<img src='images/ironmanKickRight.gif'>"
+								 document.querySelector('.ComputerAvatar').innerHTML = html;}
+
+							if (character == 2)
+							 	// character2 = 1
+							{	var html = "<img src='images/wolverineKickRight.gif'>"
+								document.querySelector('.ComputerAvatar').innerHTML = html;}
+
+							if (character == 1)
+							 	// character2 = 1
+							{	var html = "<img src='images/blackpantherKickRight.gif'>"
+								document.querySelector('.ComputerAvatar').innerHTML = html;}
+						}					
 						if (computerMove == "i")	
 						{	var computerBigHitStrength = computerStrength[Math.floor(Math.random() * computerStrength.length)];
 							var computerBigHitSpeed = computerStrength[Math.floor(Math.random() * computerStrength.length)];
@@ -408,7 +485,6 @@
 								{	var html = "<div id = 'loserScreen'></div>"
 
 								}
-
 							}											
 						}
 						if (computerMove == "o")
@@ -473,7 +549,6 @@
 								{	var html = "<div id = 'loserScreen'></div>"
 
 								}
-
 							}			
 						}
 						if (computerMove == "p")
@@ -540,16 +615,12 @@
 								{	var html = "<div id = 'loserScreen'></div>"
 
 								}
-
 							}			
-
-						}
+						}						
+					}
 				}
-			
-			}
-		
-</script>
-</body>
-</html>
+			</script>
+		</body>
+	</html>
 
 		
